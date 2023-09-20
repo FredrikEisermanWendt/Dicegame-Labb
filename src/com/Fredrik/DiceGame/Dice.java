@@ -7,11 +7,11 @@ public class Dice {
     int number;
     Random rand = new Random();
 
-    public Dice(){
+    public Dice() {
         rollDie();
     }
 
-    public void rollDie(){
+    public void rollDie() {
         number = rand.nextInt(0, 6) + 1;
     }
 
@@ -21,5 +21,10 @@ public class Dice {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "" + number;
     }
 }

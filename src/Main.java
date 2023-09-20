@@ -9,17 +9,6 @@ public class Main {
         CustomScanner cscan = new CustomScanner();
 
 
-
-
-        int i = 0;
-        do{
-            i = inputt();
-        }while(i == -1);
-
-
-
-
-
     }
 
     public static int inputter(){

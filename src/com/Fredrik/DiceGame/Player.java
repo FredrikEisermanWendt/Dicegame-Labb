@@ -22,6 +22,22 @@ public class Player {
         }
     }
 
+    public void printDice(){
+        for(Dice d : diceList){
+            System.out.println(d);
+        }
+    }
+
+    public int getDiceAmount(){
+        return diceList.size();
+
+    }
+
+    @Override
+    public String toString() {
+        return "Player no " + playerNumber + ": " + name;
+    }
+
 
 
 }
