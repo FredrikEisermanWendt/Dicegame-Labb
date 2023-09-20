@@ -11,7 +11,10 @@ public class Main {
 
 
 
-        inputt();
+        int i = 0;
+        do{
+            i = inputt();
+        }while(i == -1);
 
 
 
@@ -36,22 +39,19 @@ public class Main {
 
     public static int inputt(){
         Scanner input = new Scanner(System.in);
-        int num = 0;
+        int num = -1;
         int counter = 0;
-
-
-        do{
 
             System.out.println("HAej");
             try {
                 num = input.nextInt();
-                counter++;
             } catch (InputMismatchException e) {
                 System.out.println("Detta är inte en int, det ser jag!");
-
             }
 
+
         return num;
+
 
     }
 
