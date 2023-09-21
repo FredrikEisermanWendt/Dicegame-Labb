@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class GameControler {
     private CustomScanner input = new CustomScanner();
     private ArrayList<Player> playerList = new ArrayList();
+    private ArrayList<Player> winnerList = new ArrayList<>();
     private int highscore;
     private Rules rules;
 
@@ -14,6 +15,8 @@ public class GameControler {
         //addPlayers();
         //setHighscore();
         //playGame();
+        endGame();
+
 
     }
 
@@ -25,10 +28,10 @@ public class GameControler {
 //todo gör private
     public void addPlayers() {
         int noOfPlayers = input.inputInt("How many players: ");
-        int noOfDice = input.inputInt("How manny dice? ");
+        int noOfDice = input.inputInt("How many dice? ");
 
         for (int i = 1; i <= noOfPlayers; i++) {
-            String name = input.inputString("Give me the name of player no " + i + ": ");
+            String name = input.inputString("Write the name of player no " + i + ": ");
             playerList.add(new Player(name, i, noOfDice));
         }
 
@@ -49,8 +52,28 @@ public class GameControler {
 
 
     private void playGame() {
+        do{
+            for (Player p : playerList){
+                p.playRound();
+            }
+        }while(checkForWinners()<1);
+    }
 
-        //checkForWinners(); int
+    private int checkForWinners() {
+        int counter = 0;
+        for(Player p : playerList){
+            if(p.getScore() >= highscore){
+                counter ++;
+            }
+        }
+        return counter;
+    }
+
+    private void endGame(){
+        listWinners();
+    }
+
+    private void listWinners(){
 
     }
 

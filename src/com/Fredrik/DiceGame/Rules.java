@@ -7,13 +7,6 @@ import java.util.ArrayList;
 public class Rules {
     ArrayList<Dice> diceList = new ArrayList<>();
 
-    public Rules(ArrayList<Dice> diceList){
-        this.diceList = diceList;
-    }
-
-
-
-
     /*
     *
     * tärningarnas summa räknas ihop och först till ?? vinner
@@ -29,14 +22,8 @@ public class Rules {
     * varje spelare får skriva namn och man tilldelas ett nummer
     * */
 
-    public void fillPList(){
-        for (int i = 0; i < 3; i++) {
-            diceList.add(new Dice());
-        }
-
-    }
-
     public int scoreDice (ArrayList<Dice> diceList) {
+        this.diceList = diceList;
         int result = 0;
         if(isAllSame()){
             return jackpot();

@@ -8,6 +8,7 @@ public class Player {
     private String name;
     private int playerNumber;
     private int score;
+    private Rules rules;
 
     public Player(String name, int number, int noOfDice){
 
@@ -33,11 +34,28 @@ public class Player {
 
     }
 
+
+
     @Override
     public String toString() {
         return "Player no " + playerNumber + ": " + name;
     }
 
 
+    public int getScore() {
+        return score;
+    }
 
+    public void playRound() {
+        rollDice();
+        printDice();
+        rules.scoreDice(diceList);
+
+    }
+
+    private void rollDice() {
+        for (Dice d: diceList){
+            d.rollDie();
+        }
+    }
 }

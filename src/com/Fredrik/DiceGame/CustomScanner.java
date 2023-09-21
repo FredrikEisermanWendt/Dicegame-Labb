@@ -31,13 +31,11 @@ public class CustomScanner {
         if (input.hasNextInt()) {
             int i = input.nextInt();
             return i;
-
         } else {
             System.out.println("Error: wrong datatype");
             input.nextLine();
             return -100;
         }
-
     }
 
 
