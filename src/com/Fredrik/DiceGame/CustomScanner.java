@@ -19,6 +19,7 @@ public class CustomScanner {
 
     public int inputInt(String header) {
         int result = -100;
+
         while (result == -100) {
             System.out.println(header);
             result = intChecker();

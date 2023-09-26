@@ -43,7 +43,7 @@ public class Test {
         }
 
          */
-
+/*
         //test of jackpot in Rules
         fillDiceList(3);
         for (Dice d : diceList){
@@ -63,13 +63,11 @@ public class Test {
         System.out.println(result);
 
 
+ */
 
 
-
-
-
-
-
+        int i = scan.inputInt("hejsan");
+        System.out.println(i);
 
 
 

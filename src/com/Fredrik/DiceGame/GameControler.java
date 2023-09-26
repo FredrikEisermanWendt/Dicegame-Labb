@@ -15,6 +15,7 @@ public class GameControler {
         //addPlayers();
         //setHighscore();
         //playGame();
+        listWinners();
         endGame();
 
 
@@ -25,7 +26,7 @@ public class GameControler {
 
     }
 
-//todo gör private
+    //todo gör private
     public void addPlayers() {
         int noOfPlayers = input.inputInt("How many players: ");
         int noOfDice = input.inputInt("How many dice? ");
@@ -36,7 +37,6 @@ public class GameControler {
         }
 
     }
-
 
     //todo set private
     public void setHighscore() {
@@ -52,32 +52,74 @@ public class GameControler {
 
 
     private void playGame() {
-        do{
-            for (Player p : playerList){
+        do {
+            for (Player p : playerList) {
                 p.playRound();
             }
-        }while(checkForWinners()<1);
+        } while (checkForWinners() < 1);
     }
 
     private int checkForWinners() {
         int counter = 0;
-        for(Player p : playerList){
-            if(p.getScore() >= highscore){
-                counter ++;
+        for (Player p : playerList) {
+            if (p.getScore() >= highscore) {
+                counter++;
             }
         }
         return counter;
     }
 
-    private void endGame(){
-        listWinners();
+    private void endGame() {
+        if (winnerList.size() == 1){
+            //printOneWinnerMessage
+            return;
+        }
+        draw();
     }
 
-    private void listWinners(){
+    //todo private
+    public void draw(){
+        int choice = input.inputInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
 
+        switch (choice){
+            case 1:
+                diplomaticEnding();
+                break;
+            case 2:
+                oneDiceGame(1);
+                break;
+            default:
+                System.out.println("No such option");
+                draw();
+        }
+    }
+
+    private void listWinners() {
+        int higestScore = getHighscore();
+        for (Player p : playerList) {
+            if (p.getScore() == higestScore) {
+                winnerList.add(p);
+            }
+        }
+
+    }
+
+    private int highestScore() {
+        int highscore = playerList.get(0).getScore();
+        for (Player p : playerList) {
+            if (p.getScore() > highscore) {
+                highscore = p.getScore();
+            }
+        }
+        return highscore;
     }
 
     public int getHighscore() {
         return highscore;
     }
+
+
+
 }
+
+
