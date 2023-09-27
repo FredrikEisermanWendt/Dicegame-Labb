@@ -8,36 +8,42 @@ public class Rules {
     ArrayList<Dice> diceList = new ArrayList<>();
 
     /*
-    *
-    * tärningarnas summa räknas ihop och först till ?? vinner
-    * när någon når ?? spelas rundan klart så alla får lika många slag
-    * om några slutar på samma summa ska man få två alternativ
-    * det diplomatiska delad vinnare
-    * det krigiska super sudden death tills någon vunnit
-    * alla tärningar ettor ger extra poäng??
-    *
-    * man får välja anta tärningar och antal poäng att spela till
-    * om det är orimligt få poäng bör spelaren välja fler
-    * när spelet statras får man fråga om hur många spelare det är,
-    * varje spelare får skriva namn och man tilldelas ett nummer
-    * */
+     *
+     * tärningarnas summa räknas ihop och först till ?? vinner
+     * när någon når ?? spelas rundan klart så alla får lika många slag
+     * om några slutar på samma summa ska man få två alternativ
+     * det diplomatiska delad vinnare
+     * det krigiska super sudden death tills någon vunnit
+     * alla tärningar ettor ger extra poäng??
+     *
+     * man får välja anta tärningar och antal poäng att spela till
+     * om det är orimligt få poäng bör spelaren välja fler
+     * när spelet statras får man fråga om hur många spelare det är,
+     * varje spelare får skriva namn och man tilldelas ett nummer
+     * */
 
-    public int scoreDice (ArrayList<Dice> diceList) {
+    // TODO: 2023-09-27 snygga till logiken
+    public int scoreDice(ArrayList<Dice> diceList) {
         this.diceList = diceList;
         int result = 0;
-        if(isAllSame()){
+        // check if only one die is used, so we dont get jackpot on all or crash the program.
+        if (diceList.size() < 2){
+            result = getPointsFromDice();
+            return result;
+        }
+        if (isAllSame()) {
             return jackpot();
-        }else {
+        } else {
             result = getPointsFromDice();
             return result;
         }
     }
 
     private int jackpot() {
-        return (diceList.get(0).getNumber() * diceList.size()) + (diceList.size() * 6);
+        return (getPointsFromDice() + (diceList.size() * 6));
     }
 
-    private int getPointsFromDice(){
+    private int getPointsFromDice() {
         int result = 0;
         for (Dice d : diceList) {
             result += d.getNumber();
@@ -45,18 +51,38 @@ public class Rules {
         return result;
     }
 
-    private boolean isAllSame() {
+
+    // TODO: 2023-09-26 private
+    public boolean isAllSame() {
         int counter = 1;
-        for (int i = 0; i < diceList.size() -1; i++){
-            if (diceList.get(i).getNumber() != diceList.get(i+1).getNumber()){
-                counter --;
+        for (int i = 0; i < diceList.size() - 1; i++) {
+            if (diceList.get(i).getNumber() != diceList.get(i + 1).getNumber()) {
+                counter--;
             }
         }
-        if(counter == 1){
+        if (counter == 1) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+
+    // metoder för testning
+    //todo ta bort eller gör private
+    public void fillDListAllSameTesting() {
+        for (int i = 0; i < 6; i++) {
+            diceList.add(new Dice(5));
+        }
+    }
+
+    public void fillDListRandomDiceTesting() {
+        for (int i = 0; i < 6; i++) {
+            diceList.add(new Dice());
+        }
+    }
+    public void clearDiceList(){
+        diceList.clear();
     }
 
 

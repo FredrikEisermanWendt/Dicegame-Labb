@@ -7,7 +7,7 @@ public class Player {
     private ArrayList<Dice> diceList = new ArrayList<>();
     private String name;
     private int playerNumber;
-    private int score;
+    private int score = 0;
     private Rules rules;
 
     public Player(String name, int number, int noOfDice){
@@ -49,7 +49,7 @@ public class Player {
     public void playRound() {
         rollDice();
         printDice();
-        rules.scoreDice(diceList);
+        score += rules.scoreDice(diceList);
 
     }
 
@@ -57,5 +57,9 @@ public class Player {
         for (Dice d: diceList){
             d.rollDie();
         }
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

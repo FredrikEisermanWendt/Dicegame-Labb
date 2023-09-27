@@ -1,21 +1,21 @@
 package com.Fredrik.DiceGame;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Test {
 
-        public static int i;
-        public static ArrayList<Dice> diceList = new ArrayList<>();
-        public static CustomScanner scan = new CustomScanner();
-        public static GameControler gc = new GameControler();
-        public static Player p1 = new Player("Kalle", 1, 3);
-        public static Player p2 = new Player("Minna", 2, 3);
+    public static int i;
+    public static ArrayList<Dice> diceList = new ArrayList<>();
+    public static ArrayList<Player> playerList = new ArrayList<>();
+    public static CustomScanner scan = new CustomScanner();
+    //public static GameControler gc = new GameControler();
+    public static Player p1 = new Player("Kalle", 1, 3);
+    public static Player p2 = new Player("Minna", 2, 3);
+    public static Rules rules = new Rules();
 
 
     public static void main(String[] args) {
-
-
-
 
 
         //test player to string and print dice
@@ -35,7 +35,6 @@ public class Test {
          */
 
 
-
         //test set highscore in gameControler
         /*
         gc.addPlayers();
@@ -43,38 +42,53 @@ public class Test {
         }
 
          */
-/*
-        //test of jackpot in Rules
-        fillDiceList(3);
-        for (Dice d : diceList){
-            d.setNumber(3);
+        /*
+
+
+         */
+
+
+        int noOfPlayers = scan.inputInt("How many players: ");
+        int noOfDice = scan.inputInt("How many dice? ");
+
+        for (int i = 1; i <= noOfPlayers; i++) {
+            String name = scan.inputString("Write the name of player no " + i + ": ");
+            playerList.add(new Player(name, i, noOfDice));
         }
-        Rules rules = new Rules();
-        int twentySeven = rules.scoreDice(diceList);
-        System.out.println(twentySeven);
 
-        //test of scoreice getscorefromdice
-        fillDiceList(3);
-        for (Dice d : diceList){
-            System.out.println(d.toString());
+            int i = 5;
+        for (Player p : playerList){
+            p.setScore(i);
+            i++;
+            System.out.println(p);
+            System.out.println(p.getScore());
         }
-        rules = new Rules();
-        int result = rules.scoreDice(diceList);
-        System.out.println(result);
 
+        warEnding();
 
- */
+        for (Player p : playerList){
+            System.out.println(p);
+            System.out.println(p.getScore());
+        }
 
-
-        int i = scan.inputInt("hejsan");
-        System.out.println(i);
 
 
 
     }
-    public static void fillDiceList(int diceAmount){
+
+    private static void warEnding() {
+        System.out.println("You have chosen war! I hope you are ready for the consequences!");
+        playerList.sort(new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                return p2.getScore() - p1.getScore();
+            }
+        });
+    }
+
+    public static void fillDiceList(int diceAmount) {
         diceList.clear();
-        for (int i = 0; i < diceAmount; i++){
+        for (int i = 0; i < diceAmount; i++) {
             diceList.add(new Dice());
         }
 

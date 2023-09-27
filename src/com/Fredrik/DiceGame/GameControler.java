@@ -1,6 +1,8 @@
 package com.Fredrik.DiceGame;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class GameControler {
     private CustomScanner input = new CustomScanner();
@@ -14,9 +16,10 @@ public class GameControler {
         //printWelcomeList();
         //addPlayers();
         //setHighscore();
-        //playGame();
-        listWinners();
-        endGame();
+        //playGame(playerList);
+        //listWinners();
+        //endGame();
+        //printEndingMessage();
 
 
     }
@@ -41,9 +44,13 @@ public class GameControler {
     //todo set private
     public void setHighscore() {
         int i = playerList.get(0).getDiceAmount();
-        System.out.println("Please set a highscore \nNote that recomended highscore is " + calcHighscore(i));
+        System.out.println("Please set a highscore \nNote that recommended highscore is " + calcHighscore(i));
         highscore = input.inputInt("Highscore:");
 
+    }
+
+    public void setHighscore(int highscore) {
+        this.highscore = highscore;
     }
 
     private int calcHighscore(int diceAmount) {
@@ -51,18 +58,18 @@ public class GameControler {
     }
 
 
-    private void playGame() {
+    private void playGame(ArrayList<Player> playerList) {
         do {
             for (Player p : playerList) {
                 p.playRound();
             }
-        } while (checkForWinners() < 1);
+        } while (checkForWinners(playerList) < 1);
     }
 
-    private int checkForWinners() {
+    private int checkForWinners(ArrayList<Player> playerList) {
         int counter = 0;
         for (Player p : playerList) {
-            if (p.getScore() >= highscore) {
+            if (p.getScore() >= highscore ) {
                 counter++;
             }
         }
@@ -70,41 +77,76 @@ public class GameControler {
     }
 
     private void endGame() {
-        if (winnerList.size() == 1){
-            //printOneWinnerMessage
+        if (winnerList.size() == 1) {
+            oneWinnerEnding();
             return;
         }
         draw();
     }
 
+    private void oneWinnerEnding() {
+        System.out.println("We have a winner!");
+        System.out.println(winnerList.get(0) + " You deserve an icecream!");
+    }
+
     //todo private
-    public void draw(){
+    public void draw() {
         int choice = input.inputInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
 
-        switch (choice){
+        switch (choice) {
             case 1:
+                System.out.println("Thank you for being smart, nothing good comes from war");
                 diplomaticEnding();
                 break;
             case 2:
-                oneDiceGame(1);
+                warEnding();
                 break;
             default:
-                System.out.println("No such option");
+                System.out.println("Error: No such option!");
                 draw();
         }
     }
 
+    private void warEnding() {
+        System.out.println("You have chosen war! I hope you are ready for the consequences!");
+        do {
+            playGame(winnerList);
+        }while(noOfWinners(winnerList) != 1);
+        sortListAfterHighestScore(winnerList);
+        System.out.println("We have a WINNER! The most worthy winner in  a long time!");
+        System.out.println("The winner is " + winnerList.get(0));
+    }
+
+    private int noOfWinners(ArrayList<Player> playerList) {
+        int temp = 0;
+        int highestScore = gethighestScoreFrom(winnerList);
+        for (Player p : winnerList){
+            if (p.getScore() == highestScore){
+                temp ++;
+            }
+        }
+        return temp;
+    }
+
+
+    private void diplomaticEnding() {
+        System.out.println("Our diplomatic heroes are: ");
+        for (Player p : winnerList) {
+            System.out.println(p);
+        }
+    }
+
     private void listWinners() {
-        int higestScore = getHighscore();
+        int highestScore = gethighestScoreFrom(playerList);
         for (Player p : playerList) {
-            if (p.getScore() == higestScore) {
+            if (p.getScore() == highestScore) {
                 winnerList.add(p);
             }
         }
 
     }
 
-    private int highestScore() {
+    private int gethighestScoreFrom(ArrayList<Player> playerList) {
         int highscore = playerList.get(0).getScore();
         for (Player p : playerList) {
             if (p.getScore() > highscore) {
@@ -118,6 +160,15 @@ public class GameControler {
         return highscore;
     }
 
+    private void sortListAfterHighestScore(ArrayList<Player> playerList) {
+        winnerList.sort(new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                return p2.getScore() - p1.getScore();
+            }
+        });
+
+    }
 
 
 }
