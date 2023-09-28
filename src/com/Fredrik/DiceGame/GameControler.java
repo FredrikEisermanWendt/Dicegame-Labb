@@ -1,6 +1,4 @@
 package com.Fredrik.DiceGame;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -9,19 +7,23 @@ public class GameControler {
     private ArrayList<Player> playerList = new ArrayList();
     private ArrayList<Player> winnerList = new ArrayList<>();
     private int highscore;
-    private Rules rules;
+    private Rules rules = new Rules();
 
 
     public GameControler() {
-        //printWelcomeList();
-        //addPlayers();
-        //setHighscore();
-        //playGame(playerList);
-        //listWinners();
-        //endGame();
-        //printEndingMessage();
+        printWelcomeList();
+        addPlayers();
+        setHighscore();
+        playGame(playerList);
+        listWinners();
+        endGame();
+        printEndingMessage();
 
 
+    }
+
+    private void printEndingMessage() {
+        System.out.println("Thank you for playing!\nDo play again!");
     }
 
     private void printWelcomeList() {
@@ -69,7 +71,7 @@ public class GameControler {
     private int checkForWinners(ArrayList<Player> playerList) {
         int counter = 0;
         for (Player p : playerList) {
-            if (p.getScore() >= highscore ) {
+            if (p.getScore() >= highscore) {
                 counter++;
             }
         }
@@ -111,7 +113,7 @@ public class GameControler {
         System.out.println("You have chosen war! I hope you are ready for the consequences!");
         do {
             playGame(winnerList);
-        }while(noOfWinners(winnerList) != 1);
+        } while (noOfWinners(winnerList) != 1);
         sortListAfterHighestScore(winnerList);
         System.out.println("We have a WINNER! The most worthy winner in  a long time!");
         System.out.println("The winner is " + winnerList.get(0));
@@ -120,9 +122,9 @@ public class GameControler {
     private int noOfWinners(ArrayList<Player> playerList) {
         int temp = 0;
         int highestScore = gethighestScoreFrom(winnerList);
-        for (Player p : winnerList){
-            if (p.getScore() == highestScore){
-                temp ++;
+        for (Player p : winnerList) {
+            if (p.getScore() == highestScore) {
+                temp++;
             }
         }
         return temp;

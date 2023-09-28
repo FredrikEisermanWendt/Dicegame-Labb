@@ -1,6 +1,7 @@
 package com.Fredrik.DiceGame;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
 
@@ -8,7 +9,8 @@ public class Player {
     private String name;
     private int playerNumber;
     private int score = 0;
-    private Rules rules;
+    private Rules rules = new Rules();
+    private CustomScanner scan = new CustomScanner();
 
     public Player(String name, int number, int noOfDice){
 
@@ -47,8 +49,10 @@ public class Player {
     }
 
     public void playRound() {
+        scan.inputString(name + " it's your turn\nYou have " + score + " points\nPress enter to roll");
         rollDice();
         printDice();
+        System.out.printf("%s you have %d points ", name, score);
         score += rules.scoreDice(diceList);
 
     }
