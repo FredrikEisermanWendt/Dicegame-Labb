@@ -2,6 +2,7 @@ package com.Fredrik.DiceGame;
 
 import com.Fredrik.DiceGame.CustomScanner;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,11 +10,16 @@ import java.util.Scanner;
 public class CustomScanner {
 
 
-    private static Scanner input;
+    private Scanner input;
+    private ArrayList<InputStream> streamList = new ArrayList<>();
 
     public CustomScanner() {
         input = new Scanner(System.in);
+    }
 
+    public CustomScanner(InputStream inputStream){
+        streamList.add(inputStream);
+        input = new Scanner(System.in);
     }
 
 
@@ -43,6 +49,9 @@ public class CustomScanner {
     public String inputString(String header) {
         System.out.print(header);
         String string = input.nextLine();
+        if (string.isEmpty() || string == null){
+            return string;
+        }
         string = formatFixer(string);
         return string;
     }

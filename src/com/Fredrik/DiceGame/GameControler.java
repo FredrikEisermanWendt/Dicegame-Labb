@@ -63,7 +63,7 @@ public class GameControler {
     private void playGame(ArrayList<Player> playerList) {
         do {
             for (Player p : playerList) {
-                p.playRound();
+                p.  playRound();
             }
         } while (checkForWinners(playerList) < 1);
     }

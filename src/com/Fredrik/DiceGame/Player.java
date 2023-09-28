@@ -49,7 +49,7 @@ public class Player {
     }
 
     public void playRound() {
-        scan.inputString(name + " it's your turn\nYou have " + score + " points\nPress enter to roll");
+        String retur = scan.inputString(name + " it's your turn\nYou have " + score + " points\nPress enter to roll");
         rollDice();
         printDice();
         System.out.printf("%s you have %d points ", name, score);
