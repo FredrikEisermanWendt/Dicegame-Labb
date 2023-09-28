@@ -11,14 +11,8 @@ public class CustomScanner {
 
 
     private Scanner input;
-    private ArrayList<InputStream> streamList = new ArrayList<>();
 
     public CustomScanner() {
-        input = new Scanner(System.in);
-    }
-
-    public CustomScanner(InputStream inputStream){
-        streamList.add(inputStream);
         input = new Scanner(System.in);
     }
 
@@ -47,7 +41,7 @@ public class CustomScanner {
 
 
     public String inputString(String header) {
-        System.out.print(header);
+        System.out.println(header);
         String string = input.nextLine();
         if (string.isEmpty() || string == null){
             return string;
