@@ -14,7 +14,7 @@ public class Rules {
      * om några slutar på samma summa ska man få två alternativ
      * det diplomatiska delad vinnare
      * det krigiska super sudden death tills någon vunnit
-     * alla tärningar ettor ger extra poäng??
+     * alla tärningar lika ger extra poäng
      *
      * man får välja anta tärningar och antal poäng att spela till
      * om det är orimligt få poäng bör spelaren välja fler
@@ -29,12 +29,16 @@ public class Rules {
         // check if only one die is used, so we dont get jackpot on all or crash the program.
         if (diceList.size() < 2){
             result = getPointsFromDice();
+            System.out.println("You got " + result + " points");
             return result;
         }
         if (isAllSame()) {
+            System.out.println("YOU GOT A JACKPOT!!!");
+            System.out.println("You got " + jackpot() + " points");
             return jackpot();
         } else {
             result = getPointsFromDice();
+            System.out.println("You got " + result + " points");
             return result;
         }
     }
