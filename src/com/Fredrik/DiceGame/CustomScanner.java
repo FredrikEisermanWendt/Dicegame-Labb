@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CustomScanner {
 
 
-    private Scanner input;
+    private static Scanner input;
 
     public CustomScanner() {
         input = new Scanner(System.in);
