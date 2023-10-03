@@ -35,6 +35,15 @@ public class Player {
 
     }
 
+    public void playRound() {
+        scan.inputReturn(name + " it's your turn!\nYou have " + score + " points\nPress enter to roll");
+        rollDice();
+        printDiceList();
+        score += rules.scoreDice(diceList);
+        System.out.printf("%s you have %d points %n", name, score);
+        System.out.println("");
+
+    }
 
     @Override
     public String toString() {
@@ -46,15 +55,6 @@ public class Player {
         return score;
     }
 
-    public void playRound() {
-        String retur = scan.inputString(name + " it's your turn!\nYou have " + score + " points\nPress enter to roll");
-        rollDice();
-        printDiceList();
-        score += rules.scoreDice(diceList);
-        System.out.printf("%s you have %d points %n", name, score);
-        System.out.println("");
-
-    }
 
     private void rollDice() {
         for (Dice d : diceList) {

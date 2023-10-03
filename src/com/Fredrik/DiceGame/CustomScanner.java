@@ -17,10 +17,9 @@ public class CustomScanner {
     }
 
 
-    public int inputInt(String header) {
-        int result = -100;
-
-        while (result == -100) {
+    public int inputPositiveInt(String header) {
+        int result = 0;
+        while (result < 1) {
             System.out.println(header);
             result = intChecker();
         }
@@ -43,8 +42,13 @@ public class CustomScanner {
         String string;
         do{
             string = inputString(header);
-        }while (string != null);
+        }while (string == null);
         return string;
+    }
+
+    public void inputReturn(String header){
+        System.out.println(header);
+        input.nextLine();
     }
 
 
@@ -55,7 +59,7 @@ public class CustomScanner {
             return null;
         }
         String string = input.nextLine();
-        if (string.isEmpty() || string == null){
+        if (string.isEmpty()){
             return null;
         }
         string = formatFixer(string);

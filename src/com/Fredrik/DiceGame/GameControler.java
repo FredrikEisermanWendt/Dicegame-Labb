@@ -31,8 +31,8 @@ public class GameControler {
 
     //todo gör private
     public void addPlayers() {
-        int noOfPlayers = input.inputInt("How many players: ");
-        int noOfDice = input.inputInt("How many dice? ");
+        int noOfPlayers = input.inputPositiveInt("How many players: ");
+        int noOfDice = input.inputPositiveInt("How many dice? ");
 
         for (int i = 1; i <= noOfPlayers; i++) {
             String name = input.getRealString("Write the name of player no " + i + ": ");
@@ -44,7 +44,7 @@ public class GameControler {
     public void setHighscore() {
         int i = playerList.get(0).getDiceAmount();
         System.out.println("Please set a highscore \nNote that recommended highscore is " + calcHighscore(i));
-        highscore = input.inputInt("Highscore:");
+        highscore = input.inputPositiveInt("Highscore:");
     }
 
     private int calcHighscore(int diceAmount) {
@@ -93,7 +93,7 @@ public class GameControler {
 
     //todo private
     public void draw() {
-        int choice = input.inputInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
+        int choice = input.inputPositiveInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
 
         switch (choice) {
             case 1:
