@@ -39,16 +39,29 @@ public class CustomScanner {
         }
     }
 
+    public String getRealString(String header){
+        String string;
+        do{
+            string = inputString(header);
+        }while (string != null);
+        return string;
+    }
 
-    public String inputString(String header) {
+
+
+    public String inputString(String header){
         System.out.println(header);
+        if (input.hasNextInt()){
+            return null;
+        }
         String string = input.nextLine();
         if (string.isEmpty() || string == null){
-            return string;
+            return null;
         }
         string = formatFixer(string);
         return string;
     }
+
 
     private String formatFixer(String input) {
 

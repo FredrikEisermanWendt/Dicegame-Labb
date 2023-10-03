@@ -1,4 +1,6 @@
-package com.Fredrik.DiceGame;
+package com.Fredrik.DiceGame.Tests;
+
+import com.Fredrik.DiceGame.GameControler;
 
 public class GameControlerTest {
     public static GameControler gc = new GameControler();

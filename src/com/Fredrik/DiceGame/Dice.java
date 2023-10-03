@@ -11,7 +11,8 @@ public class Dice {
         rollDie();
     }
 
-    public Dice(int number){
+    //    konstruktor för testning
+    public Dice(int number) {
         this.number = number;
     }
 
@@ -22,6 +23,7 @@ public class Dice {
     public int getNumber() {
         return number;
     }
+
 
     public void setNumber(int number) {
         this.number = number;

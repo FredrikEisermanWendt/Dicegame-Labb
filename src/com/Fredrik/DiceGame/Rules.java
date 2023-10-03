@@ -27,7 +27,7 @@ public class Rules {
         this.diceList = diceList;
         int result = 0;
         // check if only one die is used, so we dont get jackpot on all or crash the program.
-        if (diceList.size() < 2){
+        if (diceList.size() < 2) {
             result = getPointsFromDice();
             System.out.println("You got " + result + " points");
             return result;
@@ -85,7 +85,8 @@ public class Rules {
             diceList.add(new Dice());
         }
     }
-    public void clearDiceList(){
+
+    public void clearDiceList() {
         diceList.clear();
     }
 
