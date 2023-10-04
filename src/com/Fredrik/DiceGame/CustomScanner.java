@@ -1,20 +1,12 @@
 package com.Fredrik.DiceGame;
 
-import com.Fredrik.DiceGame.CustomScanner;
-
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class CustomScanner {
 
 
-    private Scanner input;
-
-    public CustomScanner() {
-        input = new Scanner(System.in);
-    }
+    private Scanner input = new Scanner(System.in);
 
 
     public int inputPositiveInt(String header) {
@@ -38,35 +30,31 @@ public class CustomScanner {
         }
     }
 
-    public String getRealString(String header){
+    public String getRealString(String header) {
         String string;
-        do{
+        do {
             string = inputString(header);
-        }while (string == null);
+            if (string == null || string.isBlank()) {
+                System.out.println("Error: not an accepted word");
+            }
+        } while (string == null);
         return string;
     }
 
-    public void inputReturn(String header){
-        System.out.print(header);
-        input.nextLine();
-    }
-
-
-
-    public String inputString(String header){
+    private String inputString(String header) {
         System.out.println(header);
-        if (input.hasNextInt()){
-            input.nextLine();
-            return null;
-        }
         String string = input.nextLine();
-        if (string.isEmpty()){
+        if (string.isEmpty()) {
             return null;
         }
         string = formatFixer(string);
         return string;
     }
 
+    public void inputReturn(String header) {
+        System.out.print(header);
+        input.nextLine();
+    }
 
     private String formatFixer(String input) {
 
@@ -77,6 +65,4 @@ public class CustomScanner {
 
         return string;
     }
-
-
 }

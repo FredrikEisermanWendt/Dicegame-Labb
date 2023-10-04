@@ -24,7 +24,7 @@ public class Dice {
         return number;
     }
 
-
+//endast för testning
     public void setNumber(int number) {
         this.number = number;
     }

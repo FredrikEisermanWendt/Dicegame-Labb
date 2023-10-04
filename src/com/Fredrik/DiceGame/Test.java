@@ -2,6 +2,7 @@ package com.Fredrik.DiceGame;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class Test {
 
@@ -16,7 +17,10 @@ public class Test {
 
     public static void main(String[] args) {
 //
-//
+
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        //
 //        //test player to string and print dice
 //
 //        Player p1 = new Player("Kalle Jansson", 1, 3);
