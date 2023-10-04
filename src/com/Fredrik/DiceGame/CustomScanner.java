@@ -47,7 +47,7 @@ public class CustomScanner {
     }
 
     public void inputReturn(String header){
-        System.out.println(header);
+        System.out.print(header);
         input.nextLine();
     }
 
@@ -56,6 +56,7 @@ public class CustomScanner {
     public String inputString(String header){
         System.out.println(header);
         if (input.hasNextInt()){
+            input.nextLine();
             return null;
         }
         String string = input.nextLine();
