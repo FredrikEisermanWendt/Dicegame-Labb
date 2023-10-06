@@ -17,7 +17,7 @@ public class Dice {
     }
 
     public void rollDie() {
-        number = rand.nextInt(0, 6) + 1;
+        number = rand.nextInt(6) + 1;
     }
 
     public int getNumber() {

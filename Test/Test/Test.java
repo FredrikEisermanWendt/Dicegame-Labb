@@ -1,4 +1,9 @@
-package com.Fredrik.DiceGame;
+package Test;
+
+import com.Fredrik.DiceGame.CustomScanner;
+import com.Fredrik.DiceGame.Dice;
+import com.Fredrik.DiceGame.Player;
+import com.Fredrik.DiceGame.Rules;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,6 +25,7 @@ public class Test {
 
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
+
         //
 //        //test player to string and print dice
 //
