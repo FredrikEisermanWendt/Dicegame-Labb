@@ -1,7 +1,5 @@
 package com.Fredrik.DiceGame;
 
-import com.Fredrik.DiceGame.Dice;
-
 import java.util.ArrayList;
 
 public class Rules {
@@ -26,7 +24,7 @@ public class Rules {
     public int scoreDice(ArrayList<Dice> diceList) {
         this.diceList = diceList;
         int result = 0;
-        // check if only one die is used, so we dont get jackpot on all or crash the program.
+        // check if only one die is used, so we don't get jackpot on all or crash the program.
         if (diceList.size() < 2) {
             result = getPointsFromDice();
             System.out.println("You got " + result + " points");
@@ -70,25 +68,5 @@ public class Rules {
             return false;
         }
     }
-
-
-    // metoder för testning
-    //todo ta bort eller gör private
-    public void fillDListAllSameTesting() {
-        for (int i = 0; i < 6; i++) {
-            diceList.add(new Dice(5));
-        }
-    }
-
-    public void fillDListRandomDiceTesting() {
-        for (int i = 0; i < 6; i++) {
-            diceList.add(new Dice());
-        }
-    }
-
-    public void clearDiceList() {
-        diceList.clear();
-    }
-
 
 }

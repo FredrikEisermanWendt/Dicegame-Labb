@@ -11,11 +11,6 @@ public class Dice {
         rollDie();
     }
 
-    //    konstruktor för testning
-    public Dice(int number) {
-        this.number = number;
-    }
-
     public void rollDie() {
         number = rand.nextInt(6) + 1;
     }
@@ -29,9 +24,5 @@ public class Dice {
         return "" + number;
     }
 
-//endast för testning
-    public void setNumber(int number) {
-        this.number = number;
-    }
 
 }

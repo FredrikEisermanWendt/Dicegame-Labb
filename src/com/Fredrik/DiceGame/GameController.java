@@ -39,8 +39,7 @@ public class GameController {
         }
     }
 
-    //todo set private
-    public void setHighscore() {
+    private void setHighscore() {
         int i = playerList.get(0).getDiceAmount();
         System.out.println("Please set a highscore \nNote that recommended highscore is " + calcHighscore(i));
         highscore = input.registerInt("Highscore:");
@@ -90,8 +89,7 @@ public class GameController {
         System.out.println(winnerList.get(0) + " You deserve an icecream!");
     }
 
-    //todo private
-    public void draw() {
+    private void draw() {
         int choice = input.registerInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
 
         switch (choice) {
