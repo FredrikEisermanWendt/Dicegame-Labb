@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private ArrayList<Dice> diceList = new ArrayList<>();
+
+    public ArrayList<Dice> diceList = new ArrayList<>();
     private String name;
     private int playerNumber;
     private int score = 0;
@@ -64,5 +65,13 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 }

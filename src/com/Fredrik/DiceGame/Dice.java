@@ -24,13 +24,14 @@ public class Dice {
         return number;
     }
 
+    @Override
+    public String toString() {
+        return "" + number;
+    }
+
 //endast för testning
     public void setNumber(int number) {
         this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "" + number;
-    }
 }
