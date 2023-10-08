@@ -1,9 +1,9 @@
 package com.Fredrik.DiceGame.Tests;
 
-import com.Fredrik.DiceGame.GameControler;
+import com.Fredrik.DiceGame.GameController;
 
 public class GameControlerTest {
-    public static GameControler gc = new GameControler();
+    public static GameController gc = new GameController();
 
 
     public static void main(String[] args) {

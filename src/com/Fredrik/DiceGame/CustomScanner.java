@@ -9,7 +9,7 @@ public class CustomScanner {
     private Scanner input = new Scanner(System.in);
 
 
-    public int inputPositiveInt(String header) {
+    public int registerInt(String header) {
         int result = 0;
         while (result < 1) {
             System.out.println(header);
@@ -30,7 +30,7 @@ public class CustomScanner {
         }
     }
 
-    public String getRealString(String header) {
+    public String registerString(String header) {
         String string;
         do {
             string = inputString(header);

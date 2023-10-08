@@ -3,15 +3,14 @@ package com.Fredrik.DiceGame;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class GameControler {
+public class GameController {
     private CustomScanner input = new CustomScanner();
     private ArrayList<Player> playerList = new ArrayList();
     private ArrayList<Player> winnerList = new ArrayList<>();
     private int highscore;
-    private Rules rules = new Rules();
 
 
-    public GameControler() {
+    public GameController() {
         printWelcomeList();
         addPlayers();
         setHighscore();
@@ -29,13 +28,13 @@ public class GameControler {
         System.out.println("Thank you for playing!\nDo play again!");
     }
 
-    //todo gör private
-    public void addPlayers() {
-        int noOfPlayers = input.inputPositiveInt("How many players: ");
-        int noOfDice = input.inputPositiveInt("How many dice? ");
+
+    private void addPlayers() {
+        int noOfPlayers = input.registerInt("How many players: ");
+        int noOfDice = input.registerInt("How many dice? ");
 
         for (int i = 1; i <= noOfPlayers; i++) {
-            String name = input.getRealString("Write the name of player no " + i + ": ");
+            String name = input.registerString("Write the name of player no " + i + ": ");
             playerList.add(new Player(name, i, noOfDice));
         }
     }
@@ -44,7 +43,7 @@ public class GameControler {
     public void setHighscore() {
         int i = playerList.get(0).getDiceAmount();
         System.out.println("Please set a highscore \nNote that recommended highscore is " + calcHighscore(i));
-        highscore = input.inputPositiveInt("Highscore:");
+        highscore = input.registerInt("Highscore:");
     }
 
     private int calcHighscore(int diceAmount) {
@@ -93,7 +92,7 @@ public class GameControler {
 
     //todo private
     public void draw() {
-        int choice = input.inputPositiveInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
+        int choice = input.registerInt("We have a DRAW!\nHow will You end it?\nEnter:\n1: For the \"Diplomatic Route\"\n2: For \"WAR\"");
 
         switch (choice) {
             case 1:
@@ -156,13 +155,6 @@ public class GameControler {
         return highscore;
     }
 
-    public void setHighscore(int highscore) {
-        this.highscore = highscore;
-    }
-
-    public int getHighscore() {
-        return highscore;
-    }
 
 }
 
